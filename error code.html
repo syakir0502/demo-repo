@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click the button to trigger an error</h1>
+    <button onclick="triggerError()">Trigger Error</button>
+    <p id="errorMessage" class="error"></p>
+
+    <script>
+        function triggerError() {
+            try {
+                // Intentionally trigger an error
+                let result = undefinedVariable * 10;
+            } catch (error) {
+                document.getElementById("errorMessage").textContent = "Error: " + error.message;
+                console.error("Error caught: ", error);
+            }
+        }
+    </script>
+</body>
+</html>
