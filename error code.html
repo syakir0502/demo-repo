@@ -13,22 +13,47 @@
             color: red;
             font-weight: bold;
         }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <h1>Click the button to trigger an error</h1>
+    <h1>Click the button to trigger an error or see a success</h1>
     <button onclick="triggerError()">Trigger Error</button>
+    <button onclick="resetMessage()">Reset</button>
     <p id="errorMessage" class="error"></p>
+    <p id="successMessage" class="success"></p>
+    <p id="clickCount">Button clicked: 0 times</p>
 
     <script>
+        let clickCounter = 0;
+
         function triggerError() {
+            clickCounter++;
+            document.getElementById("clickCount").textContent = "Button clicked: " + clickCounter + " times";
+
             try {
                 // Intentionally trigger an error
                 let result = undefinedVariable * 10;
             } catch (error) {
                 document.getElementById("errorMessage").textContent = "Error: " + error.message;
+                document.getElementById("successMessage").textContent = ""; // Clear success message
                 console.error("Error caught: ", error);
+                return;
             }
+            // If no error, show a success message
+            document.getElementById("successMessage").textContent = "Success! No errors triggered.";
+            document.getElementById("errorMessage").textContent = ""; // Clear error message
+        }
+
+        function resetMessage() {
+            // Reset all messages and click counter
+            document.getElementById("errorMessage").textContent = "";
+            document.getElementById("successMessage").textContent = "";
+            clickCounter = 0;
+            document.getElementById("clickCount").textContent = "Button clicked: 0 times";
         }
     </script>
 </body>
