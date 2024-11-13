@@ -14,7 +14,7 @@ pipeline {
             script {
                 // Send an email after the build
                 emailext (
-                    to: 'your-email@example.com',
+                    to: '2022853154@student.uitm.edu.my.com',
                     subject: "Jenkins Build Status: ${currentBuild.currentResult}",
                     body: "The Jenkins build has completed.\n\nBuild Status: ${currentBuild.currentResult}\n\nDetails:\n${BUILD_URL}"
                 )
